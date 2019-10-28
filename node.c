@@ -1,37 +1,33 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// #include <node.h>
+#include "node.h"
 
-struct node {
-  int i;
-  struct node * next;
-};
-
-void print_list(struct node * ) {
-  printf("[ ");
-  if (node->next != 0) {
-    printf("%d ",next->i);
+void print_list(struct node * myNode) {
+  //make new node copy, so as not to modify original pointer.
+  struct node * newNode = myNode;
+  //if current node is null, print nothing!
+  if (newNode == NULL) {
+    printf("[ ]");
+    return;
   }
-  printf("]\n");
+  //if it's not null:
+  printf("[ ");
+  //loop which stops once there is no next node.
+  while (newNode->next != 0) {
+    printf("%d ",newNode->i);
+    newNode = newNode->next;
+  }
+  //there is no next node, but still need to print current (last) node:
+   printf("%d]\n",newNode->i);
+  //nvm if there is no next
+  //printf("]");
+  return;
 }
 
-int main() {
-  struct node n;
-  struct node o;
-  struct node p;
-  struct node q;
-
-  n.i = 0;
-  o.i = 1;
-  p.i = 2;
-  q.i = 3;
-
-  n.next = *o;
-  o.next = *p;
-  p.next = *q;
-
-  print_list(*n);
-
-  return 0;
+struct node * insert_front(struct node * myNode, int val){
+  struct node * out = malloc(sizeof(struct node));
+  out->next = myNode;
+  out->i = val;
+  return out;
 }
