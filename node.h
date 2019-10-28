@@ -8,6 +8,7 @@ struct node {
   struct node * next;
 };
 
+struct node* newNode(int value);
 
 void print_list(struct node * myNode);
 
@@ -19,11 +20,11 @@ struct node * insert_front(struct node * myNode, int val);
     // The second argument should match whatever data you contain in your nodes.
     // Returns a pointer to the beginning of the list.
 
-//struct node * free_list(struct node *);
+struct node * free_list(struct node * myNode);
 
     // Should take a pointer to a list as a parameter and then go through the entire list freeing each node and return a pointer to the beginning of the list (which should be NULL by then).
 
-// struct node * remove_node(struct node *front, int data);
+struct node * remove_node(struct node *front, int data);
 
     // Remove the node containing data from the list pointed to by front.
     // If data is not in the list, nothing is changed.
